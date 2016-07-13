@@ -41,13 +41,11 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         //check for location permission
-        int locPermissionCheck = ContextCompat.checkSelfPermission(this,
-                Manifest.permission.ACCESS_FINE_LOCATION);
+        int locPermissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
 
         // requests permissions for buildSDKs &gte 23
         if(locPermissionCheck != PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(this,new String[]{
-                Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
         }
 
         Log.v(LOG_TAG, "location permission is " + ContextCompat.checkSelfPermission(this,

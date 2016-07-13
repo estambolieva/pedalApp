@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ArcgisMapTest.iml" filepath="$PROJECT_DIR$/ArcgisMapTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pedalApp.iml" filepath="$PROJECT_DIR$/pedalApp.iml" />
     </modules>
   </component>
 </project>
