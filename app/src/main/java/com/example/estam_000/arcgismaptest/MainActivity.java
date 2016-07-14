@@ -37,8 +37,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+
+
 
         //check for location permission
         int locPermissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
@@ -48,8 +48,7 @@ public class MainActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
         }
 
-        Log.v(LOG_TAG, "location permission is " + ContextCompat.checkSelfPermission(this,
-                Manifest.permission.ACCESS_FINE_LOCATION));
+        Log.v(LOG_TAG, "location permission is " + ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION));
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -61,13 +60,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // get the map view from the layout files
+        // initialize the map
         mapView = (MapView) findViewById(R.id.map);
-
     }
 
-    public void onRequestPermissionsResult(int requestCode, String permissions[],
-                                           int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         switch (requestCode) {
             case 1: {
                 // If request is cancelled, the result arrays are empty.
@@ -76,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
                     // display current location on the map
                     MyStatusChangedListener myListener = new MyStatusChangedListener(mapView);
                     mapView.setOnStatusChangedListener(myListener);
-
                 } else {
                     // permission denied, boo! Disable the
                     // functionality that depends on this permission.
@@ -88,8 +84,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public boolean checkLocationPermission()
-    {
+    public boolean checkLocationPermission() {
         String permission = "android.permission.ACCESS_FINE_LOCATION";
         int res = this.checkCallingOrSelfPermission(permission);
         return (res == PackageManager.PERMISSION_GRANTED);
@@ -138,35 +133,32 @@ public class MainActivity extends AppCompatActivity {
 
                         if (!locationChanged) {
                             locationChanged = true;
-
                             double locy = location.getLatitude();
                             double locx = location.getLongitude();
                             Point wgspoint = new Point(locx, locy);
-                            Point mapPoint = (Point) GeometryEngine
-                                    .project(wgspoint,
-                                            SpatialReference.create(4326),
-                                            mapView.getSpatialReference());
+                            Point mapPoint = (Point) GeometryEngine.project(wgspoint, SpatialReference.create(4326), mapView.getSpatialReference());
 
-                            Unit mapUnit = mapView.getSpatialReference()
-                                    .getUnit();
-                            double zoomWidth = Unit.convertUnits(
-                                    5,
-                                    Unit.create(LinearUnit.Code.KILOMETER),
-                                    mapUnit);
-                            Envelope zoomExtent = new Envelope(mapPoint,
-                                    zoomWidth, zoomWidth);
+                            Unit mapUnit = mapView.getSpatialReference().getUnit();
+                            double zoomWidth = Unit.convertUnits(5, Unit.create(LinearUnit.Code.KILOMETER), mapUnit);
+                            Envelope zoomExtent = new Envelope(mapPoint, zoomWidth, zoomWidth);
                             mapView.setExtent(zoomExtent);
                         }
                     }
 
                     @Override
-                    public void onStatusChanged(String s, int i, Bundle bundle) {}
+                    public void onStatusChanged(String s, int i, Bundle bundle) {
+
+                    }
 
                     @Override
-                    public void onProviderEnabled(String s) { }
+                    public void onProviderEnabled(String s) {
+
+                    }
 
                     @Override
-                    public void onProviderDisabled(String s) {}
+                    public void onProviderDisabled(String s) {
+
+                    }
                 });
                 lDisplayManager.start();
             }

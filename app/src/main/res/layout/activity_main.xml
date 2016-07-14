@@ -13,12 +13,7 @@
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="#ffc90e"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
 
     </android.support.design.widget.AppBarLayout>
 
@@ -30,6 +25,8 @@
         <!-- i.e. to include a map -->
         <include layout="@layout/content_main" />
 
+
+
     </RelativeLayout>
 
 
@@ -40,6 +37,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        app:backgroundTint="#ffc90e"/>
+        app:backgroundTint="@color/base"/>
 
 </android.support.design.widget.CoordinatorLayout>
