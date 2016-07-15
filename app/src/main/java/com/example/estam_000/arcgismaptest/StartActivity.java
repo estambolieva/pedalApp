@@ -19,7 +19,7 @@ public class StartActivity extends AppCompatActivity {
 
     // needs a fix! this is the method called when clicking the only button on startscreen.xml
     public void startTrip(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, MapActivity.class);
         startActivity(intent);
     }
 

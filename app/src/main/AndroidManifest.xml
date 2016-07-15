@@ -2,12 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.estam_000.arcgismaptest">
 
+    <!-- Required as per the ESRI tutorial -->
     <uses-feature android:glEsVersion="0x00020000" android:required="true" />
-
     <uses-permission android:name="android.permission.INTERNET" />
-    <!-- includes permission for both GSP and network provider -->
+
+    <!-- Includes the COARSE_LOCATION permissions, so this one is enough -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+
 
     <application
         android:allowBackup="true"
@@ -28,8 +29,8 @@
 
         <!-- Main activity map -->
         <activity
-            android:name=".MainActivity"
-            android:label="Tracking your trip for NSA">
+            android:name=".MapActivity"
+            android:label="Tracking your biking trip for NSA">
             <intent-filter>
               <action android:name="android.intent.action.MAIN" />
               <category android:name="android.intent.category.DEFAULT" />

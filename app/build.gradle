@@ -39,4 +39,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:24.0.0-alpha2'
     compile 'com.android.support:design:24.0.0-alpha2'
     compile 'com.esri.arcgis.android:arcgis-android:10.2.8'
+    // compile 'pub.devrel:easypermissions:0.1.9'
 }

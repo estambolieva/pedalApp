@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
+
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -15,6 +16,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.esri.android.map.LocationDisplayManager;
 import com.esri.android.map.MapView;
@@ -26,6 +28,10 @@ import com.esri.core.geometry.Point;
 import com.esri.core.geometry.SpatialReference;
 import com.esri.core.geometry.Unit;
 
+/**
+ * Created by Ekaterina Stambolieva in the Hackathon
+ * */
+
 public class MainActivity extends AppCompatActivity {
 
     final static String LOG_TAG = MainActivity.class.getName();
@@ -33,11 +39,17 @@ public class MainActivity extends AppCompatActivity {
     LocationDisplayManager lDisplayManager = null;
     MapView mapView = null;
 
+    TextView tvLatitude;
+    TextView tvLongitude;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // initialize the textviews
+        tvLatitude = (TextView) findViewById(R.id.latitude);
+        tvLongitude = (TextView) findViewById(R.id.longitude);
 
 
         //check for location permission
@@ -45,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
         // requests permissions for buildSDKs &gte 23
         if(locPermissionCheck != PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
         }
 
         Log.v(LOG_TAG, "location permission is " + ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION));
@@ -55,8 +67,8 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Perform Action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Snackbar.make(view, "Update coordinates", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                // tvLatitude.setText("lat: " + location.getLatitude());
             }
         });
 
@@ -68,8 +80,7 @@ public class MainActivity extends AppCompatActivity {
         switch (requestCode) {
             case 1: {
                 // If request is cancelled, the result arrays are empty.
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     // display current location on the map
                     MyStatusChangedListener myListener = new MyStatusChangedListener(mapView);
                     mapView.setOnStatusChangedListener(myListener);
@@ -129,8 +140,11 @@ public class MainActivity extends AppCompatActivity {
                     // Zooms to the current location when first GPS fix arrives.
                     @Override
                     public void onLocationChanged(Location location) {
-                        boolean locationChanged = false;
 
+                        tvLatitude.setText("Lat: " + location.getLatitude());
+                        tvLongitude.setText("Lon: " + location.getLongitude());
+
+                        boolean locationChanged = false;
                         if (!locationChanged) {
                             locationChanged = true;
                             double locy = location.getLatitude();

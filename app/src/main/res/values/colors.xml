@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <!-- Thematic color palette -->
     <color name="base">#ff9000</color>
     <color name="light">#ffc900</color>
@@ -9,5 +10,6 @@
 
     <!-- Other basic colors -->
     <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
 
 </resources>
