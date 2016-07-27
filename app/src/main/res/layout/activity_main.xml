@@ -7,29 +7,140 @@
     android:fitsSystemWindows="true"
     tools:context="com.example.estam_000.arcgismaptest.MainActivity">
 
-    <android.support.design.widget.AppBarLayout
+
+
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:layout_height="match_parent">
+        <!-- i.e. include the map -->
+        <include layout="@layout/map"
+            android:id="@+id/include"/>
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="#ffc90e"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Latitude:"
+            android:id="@+id/latitude"
+            android:textStyle="bold|italic"
+            android:layout_above="@+id/longitude"
+            android:layout_alignLeft="@+id/distancia"
+            android:layout_alignStart="@+id/distancia"
+            android:textColor="@color/dark2"
+            android:background="@color/white"
+            android:textIsSelectable="true"/>
 
-    </android.support.design.widget.AppBarLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Velocidade:"
+            android:id="@+id/velocidade"
+            android:textStyle="bold|italic"
+            android:layout_alignTop="@+id/include"
+            android:layout_alignLeft="@+id/include"
+            android:layout_alignStart="@+id/include"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/dark2"
+            android:background="@color/white"
+            android:textIsSelectable="true"/>
 
-    <include layout="@layout/content_main" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Tempo:"
+            android:id="@+id/tempo"
+            android:textStyle="bold|italic"
+            android:layout_below="@+id/velocidade"
+            android:layout_alignLeft="@+id/velocidade"
+            android:layout_alignStart="@+id/velocidade"
+            android:textColor="@color/dark2"
+            android:background="@color/white"
+            android:textIsSelectable="true"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Distância:"
+            android:id="@+id/distancia"
+            android:textStyle="bold|italic"
+            android:layout_below="@+id/tempo"
+            android:layout_alignLeft="@+id/tempo"
+            android:layout_alignStart="@+id/tempo"
+            android:textColor="@color/dark2"
+            android:background="@color/white"
+            android:textIsSelectable="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Longitude:"
+            android:id="@+id/longitude"
+            android:textStyle="bold|italic"
+            android:layout_alignBottom="@+id/include"
+            android:layout_alignLeft="@+id/latitude"
+            android:layout_alignStart="@+id/latitude"
+            android:layout_marginBottom="12dp"
+            android:textColor="@color/dark2"
+            android:background="@color/white"
+            android:textIsSelectable="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Fornecedor:"
+            android:id="@+id/fornecedor"
+            android:layout_alignTop="@+id/include"
+            android:layout_alignRight="@+id/include"
+            android:layout_alignEnd="@+id/include"
+            android:textStyle="bold|italic"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:textColor="@color/dark2"
+            android:background="@color/white"
+            android:textIsSelectable="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Precisão:"
+            android:id="@+id/precisao"
+            android:layout_below="@+id/fornecedor"
+            android:layout_alignLeft="@+id/fornecedor"
+            android:layout_alignStart="@+id/fornecedor"
+            android:textStyle="bold|italic"
+            android:textColor="@color/dark2"
+            android:background="@color/white"
+            android:textIsSelectable="true"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Acabar a gravação"
+            android:id="@+id/stopbutton"
+            android:background="@color/white"
+            android:textColor="@color/base"
+            android:visibility="invisible"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+
+    </RelativeLayout>
+
+    <!-- Floating Action Button -->
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-
-        app:backgroundTint="#ffc90e"/>
+        android:layout_margin="16dp"
+        app:backgroundTint="@color/base"
+        />
 
 </android.support.design.widget.CoordinatorLayout>

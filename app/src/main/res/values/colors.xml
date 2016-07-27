@@ -3,4 +3,16 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <!-- Thematic color palette -->
+    <color name="base">#ff9000</color>
+    <color name="light">#ffc900</color>
+    <color name="dark1">#cc7300</color>
+    <color name="dark2">#995600</color>
+    <color name="dark3">#4c2b00</color>
+
+    <!-- Other basic colors -->
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+
 </resources>
