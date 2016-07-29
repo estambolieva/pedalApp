@@ -9,9 +9,6 @@ import java.util.concurrent.TimeUnit;
 /** Tracks latitudinal and longitudinal data from device sensor. */
 public class Utils extends AppCompatActivity {
 
-    // System.currentTimeMillis
-    public static SortedMap<Long, Double[]> TRIP_RECORD = new TreeMap<>();
-
     static String hhmmss(long millis) {
         return String.format("%02d:%02d:%02d",
                 TimeUnit.MILLISECONDS.toHours(millis),
